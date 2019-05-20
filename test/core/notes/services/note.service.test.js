@@ -1,7 +1,5 @@
 const sinon = require('sinon');
-const chai = require('chai');
-
-const { expect } = chai;
+const { expect } = require('chai');
 
 const { Note } = require('../../../../src/core/notes/models/note.model');
 const { fetchAll, create } = require('../../../../src/core/notes/services/note.service');

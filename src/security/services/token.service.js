@@ -24,7 +24,7 @@ const checkToken = (req, res, next) => {
     }
 
     req.decoded = decoded;
-    return next();
+    next();
   });
 };
 

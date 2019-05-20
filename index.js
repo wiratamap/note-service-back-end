@@ -32,7 +32,6 @@ app.post('/login', async (req, res) => {
 
 app.get('/notes', checkToken, async (req, res) => {
   try {
-    console.log('masuk method');
     const notes = await fetchAll();
     res.send(notes);
   } catch (error) {

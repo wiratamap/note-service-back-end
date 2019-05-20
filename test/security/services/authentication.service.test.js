@@ -1,13 +1,8 @@
 const sinon = require('sinon');
-const chai = require('chai');
-const bcrypt = require('bcrypt');
-
-const { expect } = chai;
+const { expect } = require('chai');
 
 const { User } = require('../../../src/core/users/models/user.model');
 const { login } = require('../../../src/security/services/authentication.service');
-const authConfig = require('../../../src/configuration/auth.config');
-
 
 describe('authentication.service', () => {
   const request = {
