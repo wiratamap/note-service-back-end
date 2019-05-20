@@ -9,7 +9,6 @@ const NoteSchema = new Schema({
   createdDate: { type: Date, default: Date.now() },
 });
 
-
 const Note = mongoose.model('Note', NoteSchema, 'note');
 
 module.exports = { Note };
