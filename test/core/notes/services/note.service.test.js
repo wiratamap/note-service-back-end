@@ -5,8 +5,8 @@ const { expect } = chai;
 
 require('sinon-mongoose');
 
-const { Note } = require('../../src/models/note.model');
-const { fetchAll, create } = require('../../src/services/note.service');
+const { Note } = require('../../../../src/core/notes/models/note.model');
+const { fetchAll, create } = require('../../../../src/core/notes/services/note.service');
 
 describe('note.service', () => {
   describe('fetchAll', () => {

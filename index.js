@@ -7,7 +7,7 @@ const logger = require('./src/configuration/logger');
 const app = express();
 const port = 3000;
 
-const { fetchAll, create } = require('./src/services/note.service');
+const { fetchAll, create } = require('./src/core/notes/services/note.service');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
