@@ -52,3 +52,5 @@ app.post('/notes', checkToken, async (req, res) => {
 
 
 app.listen(port);
+
+module.exports = app;

@@ -17,7 +17,7 @@ const checkToken = (req, res, next) => {
 
   jwt.verify(token, authConfig.SECRET, (error, decoded) => {
     if (error) {
-      return res.status(400).json({
+      return res.status(401).json({
         success: false,
         message: error,
       });
