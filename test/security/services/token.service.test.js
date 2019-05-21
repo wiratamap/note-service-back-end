@@ -9,16 +9,9 @@ chai.use(chaiHttp);
 const { expect } = chai;
 const server = require('../../..');
 
-const { fetchAll } = require('../../../src/core/notes/services/note.service');
-
+const { Note } = require('../../../src/core/notes/models/note.model');
 
 describe('note.service', () => {
-  const fetchAllMock = sinon.mock(fetchAll);
-
-  afterEach(() => {
-    fetchAllMock.restore();
-  });
-
   describe('checkToken', () => {
     it('should return status 400 when client does not supply the authorization header', async () => {
       const result = await chai.request(server).get('/notes');
@@ -35,6 +28,10 @@ describe('note.service', () => {
     });
 
     it('should pass the endpoint when the client successfully authenticated', async () => {
+      const NoteMock = sinon.mock(Note);
+
+      const expectedResult = [];
+      NoteMock.expects('find').returns(expectedResult);
       const token = jwt.sign({ email: 'john.doe@btpn.com' }, authConfig.SECRET, { expiresIn: '1m' });
 
       const result = await chai.request(server)
@@ -42,6 +39,7 @@ describe('note.service', () => {
         .set('Authorization', token);
 
       expect(result.status).to.eql(200);
+      NoteMock.restore();
     });
   });
 });
