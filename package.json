@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "PORT=3001 mocha test/**/*.js --exit",
+    "test": "PORT=3001 nyc mocha test/**/*.js --exit && nyc report --reporter=lcov",
     "lint": "eslint src/**/*.js test/**/*.js "
   },
   "author": "",
@@ -29,5 +29,16 @@
     "eslint-plugin-import": "^2.17.2",
     "nodemon": "^1.19.0",
     "nyc": "^14.1.1"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/**"
+    ],
+    "exclude": [
+      "index.js"
+    ],
+    "excludeNodeModules": false,
+    "check-coverage": true
   }
 }
