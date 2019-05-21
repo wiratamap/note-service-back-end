@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const logger = require('./src/configuration/logger');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const { fetchAll, create } = require('./src/core/notes/services/note.service');
 const { login } = require('./src/security/services/authentication.service');
@@ -31,7 +31,9 @@ app.post('/login', async (req, res) => {
 
 app.get('/notes', checkToken, async (req, res) => {
   try {
-    const notes = await fetchAll();
+    const userInformation = { ...req.decoded };
+
+    const notes = await fetchAll(userInformation);
     res.send(notes);
   } catch (error) {
     logger.error(`Something's wrong, error: ${error}`);
@@ -41,7 +43,9 @@ app.get('/notes', checkToken, async (req, res) => {
 
 app.post('/notes', checkToken, async (req, res) => {
   try {
-    const createdNote = await create(req.body);
+    const userInformation = { ...req.decoded };
+
+    const createdNote = await create(req.body, userInformation);
     res.status(201).send(createdNote);
   } catch (error) {
     logger.error(`Something's wrong, error: ${error}`);

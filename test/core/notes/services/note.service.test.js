@@ -5,6 +5,8 @@ const { Note } = require('../../../../src/core/notes/models/note.model');
 const { fetchAll, create } = require('../../../../src/core/notes/services/note.service');
 
 describe('note.service', () => {
+  const userInformation = { email: 'john.doe@btpn.com' };
+
   describe('fetchAll', () => {
     it('should fetch all data', async () => {
       const NoteMock = sinon.mock(Note);
@@ -15,7 +17,7 @@ describe('note.service', () => {
       ];
       NoteMock.expects('find').returns(expectedResult);
 
-      const actualResult = await fetchAll();
+      const actualResult = await fetchAll(userInformation);
 
       expect(actualResult).to.equal(expectedResult);
       NoteMock.restore();
@@ -27,7 +29,7 @@ describe('note.service', () => {
       const expectedResult = [];
       NoteMock.expects('find').returns(expectedResult);
 
-      const actualResult = await fetchAll();
+      const actualResult = await fetchAll(userInformation);
 
       expect(actualResult).to.equal(expectedResult);
       NoteMock.restore();
@@ -41,7 +43,7 @@ describe('note.service', () => {
       const note = { title: 'this is title', content: 'this is content' };
       NoteMock.expects('create').returns(note);
 
-      const actualResult = await create(note);
+      const actualResult = await create(note, userInformation);
 
       expect(actualResult).to.equal(note);
       NoteMock.restore();
@@ -55,7 +57,7 @@ describe('note.service', () => {
       NoteMock.expects('create').throws(expectedError);
 
       try {
-        await create({});
+        await create({}, userInformation);
       } catch (error) {
         expect(error).to.equal(expectedError);
         NoteMock.restore();
