@@ -12,7 +12,7 @@ Log.configure({
       },
     },
   },
-  categories: { default: { appenders: ['console'], level: 'info' } },
+  categories: { default: { appenders: ['console'], level: process.env.NODE_ENV === 'test' ? 'off' : 'info' } },
 });
 
 module.exports = Log.getLogger();

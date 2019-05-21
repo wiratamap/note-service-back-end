@@ -22,7 +22,7 @@ app.post('/login', async (req, res) => {
   try {
     const result = await login(req);
     res.status(result.status).send(result.body);
-    logger.info(`Success authenticating the user, user: ${req.body.email}`);
+    logger.info(`attempt to login with status code: ${result.status}, user: ${req.body.email}`);
   } catch (error) {
     logger.error(`Something's wrong, error: ${error}`);
     res.status(500).send(error);
