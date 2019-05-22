@@ -36,7 +36,8 @@
       "src/**"
     ],
     "exclude": [
-      "index.js"
+      "index.js",
+      "**/configuration/**"
     ],
     "excludeNodeModules": false,
     "check-coverage": true
