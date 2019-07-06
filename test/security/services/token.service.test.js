@@ -32,7 +32,7 @@ describe('note.service', () => {
 
       const expectedResult = [];
       NoteMock.expects('find').returns(expectedResult);
-      const token = jwt.sign({ email: 'john.doe@btpn.com' }, authConfig.SECRET, { expiresIn: '1m' });
+      const token = jwt.sign({ email: 'john.doe@example.com' }, authConfig.SECRET, { expiresIn: '1m' });
 
       const result = await chai.request(server)
         .get('/notes')

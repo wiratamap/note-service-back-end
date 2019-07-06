@@ -26,7 +26,7 @@ const login = async (req) => {
 
   return {
     status: 403,
-    body: { success: false, message: 'Incorect username or password' },
+    body: { success: false, message: 'Incorrect username or password' },
   };
 };
 

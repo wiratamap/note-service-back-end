@@ -7,7 +7,7 @@ const { login } = require('../../../src/security/services/authentication.service
 describe('authentication.service', () => {
   const request = {
     body: {
-      email: 'john.doe@btpn.com',
+      email: 'john.doe@example.com',
       password: 'P@ssw0rd',
     },
   };
@@ -37,7 +37,7 @@ describe('authentication.service', () => {
         body: { success: true, message: 'Authentication success!', token: 'Bearer token' },
       };
       UserMock.expects('findOne').returns({
-        email: 'john.doe@btpn.com',
+        email: 'john.doe@example.com',
         password: hashedPassword,
       });
 
@@ -55,7 +55,7 @@ describe('authentication.service', () => {
         body: { success: true, message: 'Authentication success!', token: 'Bearer token' },
       };
       UserMock.expects('findOne').returns({
-        email: 'john.doe@btpn.com',
+        email: 'john.doe@example.com',
         password: 'random-hash',
       });
 

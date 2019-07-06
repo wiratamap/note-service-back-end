@@ -5,7 +5,7 @@ const { Note } = require('../../../../src/core/notes/models/note.model');
 const { fetchAll, create } = require('../../../../src/core/notes/services/note.service');
 
 describe('note.service', () => {
-  const userInformation = { email: 'john.doe@btpn.com' };
+  const userInformation = { email: 'john.doe@example.com' };
 
   describe('fetchAll', () => {
     it('should fetch all data', async () => {

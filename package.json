@@ -1,12 +1,12 @@
 {
-  "name": "ms-wiratama-notes",
+  "name": "note-service-back-end",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "test": "NODE_ENV=test PORT=3001 nyc mocha test/**/*.js --exit && nyc report --reporter=lcov",
-    "lint": "eslint src/**/*.js test/**/*.js "
+    "lint": "eslint src test"
   },
   "author": "",
   "license": "ISC",
