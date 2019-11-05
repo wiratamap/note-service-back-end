@@ -19,7 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "log4js": "^4.2.0",
     "mocha": "^6.1.4",
-    "mongoose": "^5.5.8",
+    "mongoose": "^5.7.5",
     "sinon": "^7.3.2",
     "sinon-mongoose": "^2.3.0"
   },
